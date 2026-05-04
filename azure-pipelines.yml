@@ -7,17 +7,23 @@ trigger:
 - main
 
 pool:
-vmImage: ubuntu-latest
+  vmImage: ubuntu-latest
 
 steps:
 - task: Maven@4
-inputs:
-mavenPomFile: &#39;pom.xml&#39;
-mavenOptions: &#39;-Xmx3072m&#39;
+  inputs:
+    mavenPomFile: 'pom.xml'
+    mavenOptions: '-Xmx3072m'
+    javaHomeOption: 'JDKVersion'
+    jdkVersionOption: '1.17'
+    jdkArchitectureOption: 'x64'
+    publishJUnitResults: true
+    testResultsFiles: '**/surefire-reports/TEST-*.xml'
+    goals: 'clean package'
 
-javaHomeOption: &#39;JDKVersion&#39;
-jdkVersionOption: &#39;1.17&#39;
-jdkArchitectureOption: &#39;x64&#39;
-publishJUnitResults: true
-testResultsFiles: &#39;**/surefire-reports/TEST-*.xml&#39;
-goals: &#39;clean package&#39;
+
+
+
+
+
+
